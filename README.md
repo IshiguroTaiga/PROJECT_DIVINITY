@@ -5,21 +5,21 @@
 
 ---
 
-## ✨ Features
+## Features
 
-### 🌓 Dynamic Dual Themes
+### Dynamic Dual Themes
 The entire site aesthetics, typography, and motifs shift seamlessly between the two characters at the click of a toggle.
 - **Priestess Theme:** Ancient civilization, cosmic horror, deep crimson/obsidian palette, and the "EYESOFPRIESTESS" watermark.
 - **The Herta Theme:** Galactic grandeur, academic arrogance, rich purple/navy palette, and Genius Society motifs.
 
-### 🎭 Character-Specific UI/UX
+### Character-Specific UI/UX
 - **SVG Cursors:** Custom-drawn crimson eye sigil for Priestess and a glowing purple star for The Herta.
 - **Particle Backgrounds:** Drifting glowing embers for Priestess and falling cosmic snowflakes for The Herta.
 - **Parallax Hero:** Cinematic splash art that responds to mouse movement and scrolling.
 - **Animated Timeline:** An immersive vertical timeline detailing the lore of both deities.
 - **Lightbox Gallery:** A fullscreen visual record system for high-quality character assets.
 
-### 🤖 Intelligent Chatbot (Groq-Powered)
+### Intelligent Chatbot (Groq-Powered)
 A fully functional, persona-isolated chat interface using the **Groq API (Llama 3.3)** for near-instant responses.
 - **Isolated History:** Independent memory banks for each character.
 - **Advanced Controls:** Minimize, Maximize, New Chat, and Clear History functionality.
@@ -27,7 +27,7 @@ A fully functional, persona-isolated chat interface using the **Groq API (Llama 
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 - **Frontend:** HTML5, CSS3 (Custom Properties), Vanilla JavaScript.
 - **Backend:** Node.js, Express (API Proxy Server to bypass CORS).
 - **AI Inference:** Groq API (llama-3.3-70b-versatile).
@@ -35,7 +35,7 @@ A fully functional, persona-isolated chat interface using the **Groq API (Llama 
 
 ---
 
-## 🚀 Getting Started (Local Development)
+## Getting Started (Local Development)
 
 1. **Install Dependencies:**
    ```bash
@@ -56,7 +56,7 @@ A fully functional, persona-isolated chat interface using the **Groq API (Llama 
 
 ---
 
-## 🌐 Deployment Guide (GitHub Pages + Backend)
+## Deployment Guide (GitHub Pages + Backend)
 
 Since GitHub Pages only hosts **static** files, it cannot run the `server.js` required for the AI chatbot. To publish this site fully:
 
@@ -71,7 +71,7 @@ Since GitHub Pages only hosts **static** files, it cannot run the `server.js` re
 
 ---
 
-## 📜 Credits
+## Credits
 - **Created by:** Ishiguro Taiga
 - **Assets:** Character designs and lore belong to **Hypergryph** (Arknights) and **HoYoverse** (Honkai: Star Rail).
 - **Disclaimer:** This is a non-profit fan project and is not affiliated with the developers or publishers of the respective games.
