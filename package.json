@@ -10,7 +10,6 @@
     "express": "^4.18.2"
   },
   "scripts": {
-    "build": "echo 'No build step required'",
     "start": "node server.js",
     "dev:server": "nodemon server.js",
     "dev:sync": "browser-sync start --proxy 'localhost:3000' --files '*.html, *.css, *.js, images/**/*' --no-notify",
