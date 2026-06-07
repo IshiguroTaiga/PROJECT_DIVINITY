@@ -400,6 +400,134 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.section-reveal').forEach(el => observer.observe(el));
     const savedTheme = localStorage.getItem('theme') || 'priestess';
     switchTheme(savedTheme);
+    // --- THE VAULT & DEEPWOKEN LOGIC ---
+    const vaultOverlay = document.getElementById('vault-overlay');
+    const openVaultBtn = document.getElementById('open-vault-btn');
+    const closeVaultBtn = document.getElementById('close-vault');
+    const vaultPages = document.querySelectorAll('.vault-page');
+    const vaultBackBtns = document.querySelectorAll('.v-back-btn');
+
+    // Data State for Vault
+    let vaultState = JSON.parse(localStorage.getItem('herta_vault_data')) || {
+        entries: [
+            { id: 'roblox', name: 'Roblox', type: 'social' },
+            { id: 'deepwoken', name: 'Deepwoken', type: 'game' }
+        ],
+        deepwoken: { relics: [], armor: [], weapons: [] }
+    };
+
+    function saveVault() {
+        localStorage.setItem('herta_vault_data', JSON.stringify(vaultState));
+    }
+
+    // Navigation
+    function showVaultPage(pageId) {
+        vaultPages.forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        if (pageId === 'v-entries-page') renderVaultGrid();
+        if (pageId === 'v-manage-page') renderManageList();
+        if (pageId === 'v-deepwoken-page') updateDWClock();
+    }
+
+    openVaultBtn.addEventListener('click', () => {
+        vaultOverlay.classList.add('active');
+        body.style.overflow = 'hidden';
+    });
+
+    closeVaultBtn.addEventListener('click', () => {
+        vaultOverlay.classList.remove('active');
+        body.style.overflow = 'auto';
+    });
+
+    document.getElementById('btn-goto-vault').addEventListener('click', () => showVaultPage('v-entries-page'));
+    document.getElementById('btn-goto-deepwoken').addEventListener('click', () => showVaultPage('v-deepwoken-page'));
+    document.getElementById('btn-goto-manage').addEventListener('click', () => showVaultPage('v-manage-page'));
+
+    vaultBackBtns.forEach(btn => {
+        btn.addEventListener('click', () => showVaultPage('v-main-menu'));
+    });
+
+    // Vault Rendering
+    function renderVaultGrid() {
+        const container = document.getElementById('vault-grid-container');
+        container.innerHTML = vaultState.entries.map(e => `
+            <div class="v-app-card">
+                <span>${e.type === 'game' ? '🎮' : '📱'}</span>
+                <div>
+                    <div class="v-card-title">${e.name}</div>
+                    <div class="v-card-desc">${e.type}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderManageList() {
+        const container = document.getElementById('manage-list-container');
+        container.innerHTML = vaultState.entries.map((e, i) => `
+            <div class="manage-item" style="display:flex; justify-content: space-between; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; margin-bottom: 10px;">
+                <span>${e.name} (${e.type})</span>
+                <button onclick="deleteVaultEntry(${i})" style="background:none; border:none; color: #ff4d4d; cursor:pointer;">&times;</button>
+            </div>
+        `).join('');
+    }
+
+    window.deleteVaultEntry = (index) => {
+        vaultState.entries.splice(index, 1);
+        saveVault();
+        renderManageList();
+    };
+
+    // Modal logic
+    const entryModal = document.getElementById('entry-modal');
+    document.getElementById('btn-add-new-vault').addEventListener('click', () => entryModal.style.display = 'flex');
+    document.getElementById('v-modal-cancel').addEventListener('click', () => entryModal.style.display = 'none');
+    document.getElementById('v-modal-save').addEventListener('click', () => {
+        const name = document.getElementById('v-field-name').value;
+        const type = document.getElementById('v-field-type').value;
+        if (name) {
+            vaultState.entries.push({ id: Date.now(), name, type });
+            saveVault();
+            entryModal.style.display = 'none';
+            renderManageList();
+        }
+    });
+
+    // Deepwoken Logic (Parasol)
+    const PARASOL_TIMES = [[3,0],[4,30],[6,0],[7,30],[9,0],[10,30],[12,0],[13,30],[15,0],[16,30],[18,0],[19,30],[21,0],[22,30],[0,0],[1,30]];
+    
+    function updateDWClock() {
+        const now = new Date();
+        const ph = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
+        document.getElementById('dw-live-clock').textContent = ph.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+        const day = ph.getDate(), month = ph.getMonth(), year = ph.getFullYear();
+        const sched = PARASOL_TIMES.map(([h, m]) => new Date(year, month, day, h, m, 0)).sort((a,b) => a-b);
+        
+        let next = sched.find(t => t > ph) || new Date(year, month, day + 1, sched[0].getHours(), sched[0].getMinutes());
+        document.getElementById('dw-next-parasol').textContent = next.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        
+        const diff = next - ph;
+        const h = Math.floor(diff/3600000), m = Math.floor((diff%3600000)/60000);
+        document.getElementById('dw-countdown').textContent = `in ${h}h ${m}m`;
+
+        const grid = document.getElementById('dw-schedule-grid');
+        grid.innerHTML = sched.map(t => `<div class="sched-item ${t < ph ? 'passed' : (t.getTime() === next.getTime() ? 'next-up' : '')}">${t.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'})}</div>`).join('');
+    }
+
+    setInterval(() => { if (document.getElementById('v-deepwoken-page').classList.contains('active')) updateDWClock(); }, 1000);
+
+    // Deepwoken Tabs
+    document.querySelectorAll('.dw-nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.dw-nav-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.dw-tab-content').forEach(c => b.classList.remove('active')); // Fixed typo from source logic
+            btn.classList.add('active');
+            const tab = btn.dataset.tab;
+            document.querySelectorAll('.dw-tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(`dw-tab-${tab}`).classList.add('active');
+        });
+    });
+
     animateParticles();
     document.getElementById('reveal-lore').addEventListener('click', function() {
         document.getElementById('lore-files').classList.remove('blurred');

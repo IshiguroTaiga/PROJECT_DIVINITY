@@ -164,8 +164,9 @@
                 <p>AoE Ice DMG, redistributes Interpretation stacks, boosts ATK by 40–88%, and grants Inspiration.</p>
             </div>
             <div class="power-card">
-                <h4>Skill: Big Brain Energy</h4>
-                <p>Blast Ice DMG, inflicts "Interpretation" stacks on enemies for sustained pressure.</p>
+                <h4>Access The Vault</h4>
+                <p>Manage your accounts, profiles, and game data in one centralized hub.</p>
+                <button id="open-vault-btn" class="vault-trigger-btn">Initialize Vault</button>
             </div>
             <div class="power-card">
                 <h4>Talent: Hand Them Over</h4>
@@ -256,6 +257,132 @@
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <!-- === THE VAULT OVERLAY === -->
+    <div id="vault-overlay" class="vault-overlay">
+        <div class="vault-backdrop"></div>
+        <div class="vault-shell">
+            <button id="close-vault" class="vault-close-btn">&times;</button>
+            
+            <div id="vault-app">
+                <!-- MAIN MENU -->
+                <div class="vault-page active" id="v-main-menu">
+                    <div class="v-herta-title">
+                        <div class="v-eyebrow">Welcome to</div>
+                        <h2>The Herta's Vault</h2>
+                        <div class="v-subtitle">Personal Dashboard</div>
+                        <div class="v-divider"></div>
+                    </div>
+                    <div class="v-menu-grid">
+                        <div class="v-menu-card" id="btn-goto-vault">
+                            <span class="v-card-icon">🗂️</span>
+                            <div class="v-card-title">The Vault</div>
+                            <div class="v-card-desc">Apps, accounts & profiles</div>
+                        </div>
+                        <div class="v-menu-card" id="btn-goto-deepwoken">
+                            <span class="v-card-icon">🌊</span>
+                            <div class="v-card-title">Deepwoken</div>
+                            <div class="v-card-desc">Event timers & inventory</div>
+                        </div>
+                        <div class="v-menu-card" id="btn-goto-manage">
+                            <span class="v-card-icon">⚙️</span>
+                            <div class="v-card-title">Manage</div>
+                            <div class="v-card-desc">Add, edit & delete</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VAULT ENTRIES PAGE -->
+                <div class="vault-page" id="v-entries-page">
+                    <button class="v-back-btn">&larr; Back</button>
+                    <div class="v-page-header">
+                        <h3>The Vault</h3>
+                        <p>All your apps & accounts</p>
+                    </div>
+                    <div class="v-grid" id="vault-grid-container"></div>
+                </div>
+
+                <!-- DEEPWOKEN PAGE -->
+                <div class="vault-page" id="v-deepwoken-page">
+                    <button class="v-back-btn">&larr; Back</button>
+                    <div class="v-page-header">
+                        <h3>Deepwoken Manager</h3>
+                        <p>Powered by the Interluminary</p>
+                    </div>
+
+                    <nav class="dw-nav">
+                        <button class="dw-nav-btn active" data-tab="events">Events</button>
+                        <button class="dw-nav-btn" data-tab="relics">Relics</button>
+                        <button class="dw-nav-btn" data-tab="armor">Armor</button>
+                        <button class="dw-nav-btn" data-tab="weapons">Weapons</button>
+                    </nav>
+
+                    <!-- DW Events -->
+                    <div id="dw-tab-events" class="dw-tab-content active">
+                        <div class="parasol-current">
+                            <div class="current-label">Server Time (PH)</div>
+                            <div class="current-time" id="dw-live-clock">--:--:--</div>
+                        </div>
+                        <div class="dw-countdown-row">
+                            <div class="dw-countdown-card">
+                                <div class="dw-label">Next Parasol</div>
+                                <div class="dw-num" id="dw-next-parasol">--:--</div>
+                                <div class="dw-when" id="dw-countdown">loading...</div>
+                            </div>
+                        </div>
+                        <div class="dw-schedule-grid" id="dw-schedule-grid"></div>
+                    </div>
+
+                    <!-- DW Inventory (Relics, Armor, Weapons) -->
+                    <div id="dw-tab-relics" class="dw-tab-content">
+                        <div class="dw-inv-header"><h4>Relic Collection</h4><button class="dw-add-btn" data-type="relic">+ Add</button></div>
+                        <div class="dw-grid" id="dw-relic-grid"></div>
+                    </div>
+                    <div id="dw-tab-armor" class="dw-tab-content">
+                        <div class="dw-inv-header"><h4>Armor Collection</h4><button class="dw-add-btn" data-type="armor">+ Add</button></div>
+                        <div class="dw-grid" id="dw-armor-grid"></div>
+                    </div>
+                    <div id="dw-tab-weapons" class="dw-tab-content">
+                        <div class="dw-inv-header"><h4>Weapon Arsenal</h4><button class="dw-add-btn" data-type="weapon">+ Add</button></div>
+                        <div class="dw-grid" id="dw-weapon-grid"></div>
+                    </div>
+                </div>
+
+                <!-- MANAGE PAGE -->
+                <div class="vault-page" id="v-manage-page">
+                    <button class="v-back-btn">&larr; Back</button>
+                    <div class="v-page-header">
+                        <h3>Manage Entries</h3>
+                    </div>
+                    <div id="manage-list-container"></div>
+                    <button id="btn-add-new-vault" class="v-primary-btn">+ Add New Entry</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ENTRY MODAL -->
+    <div id="entry-modal" class="v-modal">
+        <div class="v-modal-content">
+            <h4 id="v-modal-title">Add Entry</h4>
+            <div class="v-form-group">
+                <label>Name</label>
+                <input type="text" id="v-field-name">
+            </div>
+            <div class="v-form-group">
+                <label>Type</label>
+                <select id="v-field-type">
+                    <option value="payment">Payment / QR</option>
+                    <option value="social">Social Profile</option>
+                    <option value="game">Game Account</option>
+                </select>
+            </div>
+            <div class="v-modal-actions">
+                <button id="v-modal-cancel">Cancel</button>
+                <button id="v-modal-save">Save</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
