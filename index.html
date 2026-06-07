@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: DIVINITY</title>
+    <link rel="icon" id="favicon" href="./images/Priestess/Priestess_Icon.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-priestess" id="body">
+    <!-- Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Page Transition Overlay -->
+    <div id="page-transition"></div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-switcher">
+        <button id="theme-toggle" title="Switch Theme">
+            <span class="btn-text">Switch to The Herta</span>
+            <div class="btn-icons">
+                <img src="./images/Priestess/Priestess_Icon.jpg" alt="Priestess" class="icon-p">
+                <img src="./images/THerta/THerta_Logo.png" alt="THerta" class="icon-h">
+            </div>
+        </button>
+    </div>
+
+    <!-- Navigation (Optional but helpful) -->
+    <nav class="side-nav">
+        <ul>
+            <li><a href="#hero" class="active">Top</a></li>
+            <li><a href="#about">Overview</a></li>
+            <li><a href="#lore">Lore</a></li>
+            <li><a href="#power">Abilities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#comparison">Duality</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section id="hero" class="hero-section section-reveal">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="char-name">Priestess</h1>
+            <p class="hero-subtitle">She who came before. She who shaped the world.</p>
+            <div class="scroll-indicator">
+                <span>SCROLL</span>
+                <div class="arrow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Who Are They? -->
+    <section id="about" class="section about-section section-reveal">
+        <h2 class="section-title">Who Are They?</h2>
+        <div class="card-container">
+            <!-- Priestess Card -->
+            <div class="char-card priestess-card">
+                <div class="card-img">
+                    <img src="./images/Priestess/Priestess_Standee.jpg" alt="Priestess Standee">
+                </div>
+                <div class="card-info">
+                    <h3>Priestess</h3>
+                    <ul class="stats-list">
+                        <li><strong>Game:</strong> Arknights</li>
+                        <li><strong>Role:</strong> NPC / Mysterious Figure</li>
+                        <li><strong>Origin:</strong> First Civilization Survivor</li>
+                        <li><strong>Connection:</strong> Partner to the Doctor</li>
+                    </ul>
+                    <p class="card-desc">One of the last survivors of the ancient civilization. She placed the Doctor in the Chernobog Sarcophagus and appears to be the template for PRTS.</p>
+                    <blockquote class="char-quote">"My darling, there will be the day when we shall meet again even if the galaxies vanish into the void."</blockquote>
+                </div>
+            </div>
+
+            <!-- The Herta Card -->
+            <div class="char-card therta-card">
+                <div class="card-img">
+                    <img src="./images/THerta/THerta_Standee.png" alt="The Herta Standee">
+                </div>
+                <div class="card-info">
+                    <h3>The Herta</h3>
+                    <ul class="stats-list">
+                        <li><strong>Game:</strong> Honkai: Star Rail</li>
+                        <li><strong>Role:</strong> 5-Star Ice Erudition</li>
+                        <li><strong>Origin:</strong> Genius Society #83</li>
+                        <li><strong>Status:</strong> Emanator of Erudition</li>
+                    </ul>
+                    <p class="card-desc">The true form behind the puppets. Co-creator of the Simulated Universe. Lives at the edge of the cosmos, a being of near-divine intellect.</p>
+                    <blockquote class="char-quote">"If they dared to write 'Herta Prime,' then I would call myself THE Herta. Short, simple, straight to the point, and elegant."</blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Lore Deep Dive -->
+    <section id="lore" class="section lore-section section-reveal">
+        <h2 class="section-title">Lost History</h2>
+        
+        <div class="spoiler-warning">
+            <p>⚠️ SPOILER WARNING: Contains deep lore from Arknights and Honkai: Star Rail ⚠️</p>
+            <button id="reveal-lore">Access Files</button>
+        </div>
+
+        <div class="lore-content blurred" id="lore-files">
+            <div class="timeline">
+                <div class="timeline-item left section-reveal">
+                    <div class="timeline-content priestess-lore">
+                        <h3>The Origin of Corruption</h3>
+                        <p>Priestess is responsible for the "corruption" of Originium, an experiment described as "mad" by Trevor Friston. Alongside the Doctor, she created Kal'tsit (AMa-10).</p>
+                    </div>
+                </div>
+                <div class="timeline-item right section-reveal">
+                    <div class="timeline-content therta-lore">
+                        <h3>The Genius of Erudition</h3>
+                        <p>Member #83 of the Genius Society and an Emanator of Nous. She created the Simulated Universe to study Aeons. Her true body rarely manifests.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left section-reveal">
+                    <div class="timeline-content priestess-lore">
+                        <h3>Rhodes Island Connection</h3>
+                        <p>Her presence lingers in Rhodes Island through PRTS, whose personality is modeled after her. The watermark "EYESOFPRIESTESS" watches over every tactical move.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right section-reveal">
+                    <div class="timeline-content therta-lore">
+                        <h3>THE Herta Prime</h3>
+                        <p>Since Version 3.0, "The Herta" has taken the field herself, asserting her dominance over the cosmic stage, refusing the title "Prime" for simplicity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Abilities / Mysteries -->
+    <section id="power" class="section power-section section-reveal">
+        <h2 class="section-title dynamic-title">Ancient Mysteries</h2>
+        
+        <!-- Priestess View -->
+        <div class="priestess-view power-grid">
+            <div class="power-card">
+                <h4>What was the Experiment?</h4>
+                <p>The true nature of the Originium corruption remains the biggest enigma in Terran history.</p>
+            </div>
+            <div class="power-card">
+                <h4>The First Civilization</h4>
+                <p>How did they fall, and why did only a few like Priestess and the Doctor survive?</p>
+            </div>
+            <div class="power-card">
+                <h4>Where is She Now?</h4>
+                <p>Is she still alive in the sarcophagus, or has she become something more... digital?</p>
+            </div>
+        </div>
+
+        <!-- The Herta View -->
+        <div class="therta-view power-grid hidden">
+            <div class="power-card">
+                <h4>Ultimate: Told Ya! Magic Happens</h4>
+                <p>AoE Ice DMG, redistributes Interpretation stacks, boosts ATK by 40–88%, and grants Inspiration.</p>
+            </div>
+            <div class="power-card">
+                <h4>Skill: Big Brain Energy</h4>
+                <p>Blast Ice DMG, inflicts "Interpretation" stacks on enemies for sustained pressure.</p>
+            </div>
+            <div class="power-card">
+                <h4>Talent: Hand Them Over</h4>
+                <p>Passively stacks Interpretation; Enhanced Skill's final hit scales with these stacks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Gallery -->
+    <section id="gallery" class="section gallery-section section-reveal">
+        <h2 class="section-title">Visual Records</h2>
+        <div class="gallery-grid" id="gallery-container">
+            <!-- Dynamically filtered by JS -->
+        </div>
+    </section>
+
+    <!-- 6. Duality Comparison -->
+    <section id="comparison" class="section comparison-section section-reveal">
+        <h2 class="section-title">The Duality</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Trait</th>
+                        <th>Priestess</th>
+                        <th>The Herta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Game</td><td>Arknights</td><td>Honkai: Star Rail</td></tr>
+                    <tr><td>Role</td><td>Ancient NPC</td><td>Playable 5-Star</td></tr>
+                    <tr><td>Power Level</td><td>Civilization-shaping</td><td>Aeon Emanator</td></tr>
+                    <tr><td>Personality</td><td>Devoted, Sorrowful</td><td>Brilliant, Arrogant</td></tr>
+                    <tr><td>Signature</td><td>EYESOFPRIESTESS</td><td>"THE Herta"</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="footer">
+        <div class="footer-icons">
+            <img src="./images/Priestess/Priestess_Icon.jpg" alt="Arknights">
+            <img src="./images/THerta/THerta_Logo.png" alt="Star Rail">
+        </div>
+        <p>Fan site — Not affiliated with Hypergryph or HoYoverse.</p>
+        <p>Created by ur boy Ishiguro Taiga</p>
+        <div class="footer-links">
+            <a href="https://arknights.fandom.com/wiki/Priestess" target="_blank">Priestess Wiki</a> | 
+            <a href="https://honkai-star-rail.fandom.com/wiki/The_Herta" target="_blank">The Herta Wiki</a>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot" class="chatbot-container">
+        <button id="chatbot-toggle" class="chatbot-btn">
+            <img src="./images/Priestess/Priestess_Icon.jpg" alt="Chat" id="chatbot-icon">
+            <div class="btn-glow"></div>
+        </button>
+        
+        <div id="chat-panel" class="chat-panel">
+            <div class="chat-header">
+                <div class="chat-user">
+                    <img src="./images/Priestess/Priestess_Icon.jpg" alt="User" id="chat-avatar">
+                    <span id="chat-title">Priestess</span>
+                </div>
+                <div class="chat-controls">
+                    <button id="chat-new" title="New Chat">＋</button>
+                    <button id="chat-clear" title="Clear History">🗑</button>
+                    <button id="chat-minimize" title="Minimize">—</button>
+                    <button id="chat-maximize" title="Maximize">▢</button>
+                    <button id="chat-close" title="Close">&times;</button>
+                </div>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-msg">
+                    <p id="chat-greeting">...You've found me. How curious.</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Say something...">
+                <button id="send-msg">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
