@@ -262,6 +262,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatMessages = document.getElementById('chat-messages');
 
     async function getBotReply(userText, theme) {
+        // --- DEPLOYMENT CONFIGURATION ---
+        // For local development, use: "/api/chat"
+        // For GitHub Pages, use your live backend URL (e.g., "https://your-app.onrender.com/api/chat")
+        const API_URL = "/api/chat"; 
+
         const systemPrompts = {
             priestess: `You are Priestess from Arknights. You are one of the last survivors 
             of Terra's First Civilization — ancient, mysterious, and deeply sorrowful yet 
@@ -280,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Never break character. Never mention you are an AI.`
         };
 
-        const response = await fetch('/api/chat', {
+        const response = await fetch(API_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
