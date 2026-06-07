@@ -10,10 +10,10 @@
 ### 🌓 Dynamic Dual Themes
 The entire site aesthetics, typography, and motifs shift seamlessly between the two characters at the click of a toggle.
 - **Priestess Theme:** Ancient civilization, cosmic horror, deep crimson/obsidian palette, and the "EYESOFPRIESTESS" watermark.
-- **The Herta Theme:** Galactic grandeur, academic arrogance, icy blue/navy palette, and Genius Society motifs.
+- **The Herta Theme:** Galactic grandeur, academic arrogance, rich purple/navy palette, and Genius Society motifs.
 
 ### 🎭 Character-Specific UI/UX
-- **SVG Cursors:** Custom-drawn crimson eye sigil for Priestess and a glowing cyan star for The Herta.
+- **SVG Cursors:** Custom-drawn crimson eye sigil for Priestess and a glowing purple star for The Herta.
 - **Particle Backgrounds:** Drifting glowing embers for Priestess and falling cosmic snowflakes for The Herta.
 - **Parallax Hero:** Cinematic splash art that responds to mouse movement and scrolling.
 - **Animated Timeline:** An immersive vertical timeline detailing the lore of both deities.

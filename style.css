@@ -8,12 +8,12 @@
     --p-glow: rgba(139, 0, 0, 0.4);
 
     /* The Herta Theme Variables */
-    --h-blue: #a5f3fc;
+    --h-purple: #c084fc;
     --h-navy: #0f172a;
-    --h-lavender: #e0e7ff;
-    --h-cyan: #22d3ee;
-    --h-frost: #f8fafc;
-    --h-glow: rgba(34, 211, 238, 0.4);
+    --h-lavender: #f5f3ff;
+    --h-violet: #8b5cf6;
+    --h-frost: #faf5ff;
+    --h-glow: rgba(139, 92, 246, 0.4);
 
     /* Current Theme (Default Priestess) */
     --primary: var(--p-crimson);
@@ -30,16 +30,16 @@
 }
 
 .theme-herta {
-    --primary: var(--h-cyan);
+    --primary: var(--h-purple);
     --secondary: var(--h-lavender);
     --bg-main: var(--h-navy);
-    --bg-alt: #1e293b;
+    --bg-alt: #1e1b4b;
     --text-main: var(--h-frost);
     --text-muted: #94a3b8;
     --font-main: 'Inter', sans-serif;
     --font-heading: 'Space Grotesk', sans-serif;
     --accent-glow: var(--h-glow);
-    --border-color: rgba(34, 211, 238, 0.3);
+    --border-color: rgba(139, 92, 246, 0.3);
     --motif: "✦ GENIUS SOCIETY #83 ✦";
 }
 
@@ -61,7 +61,7 @@ body::after {
 }
 
 .theme-herta {
-    background-image: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    background-image: radial-gradient(circle at center, #1e1b4b 0%, #0f172a 100%);
 }
 
 * {

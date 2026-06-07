@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (this.life <= 0) this.reset();
         }
         draw() {
-            pCtx.fillStyle = this.theme === 'priestess' ? `rgba(255, 69, 0, ${this.opacity})` : `rgba(165, 243, 252, ${this.opacity})`;
+            pCtx.fillStyle = this.theme === 'priestess' ? `rgba(255, 69, 0, ${this.opacity})` : `rgba(192, 132, 252, ${this.opacity})`;
             pCtx.beginPath();
             pCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             pCtx.fill();
