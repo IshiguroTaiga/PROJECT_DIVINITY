@@ -43,7 +43,10 @@ A fully functional, persona-isolated chat interface using the **Groq API (Llama 
    ```
 
 2. **Set Up API Key:**
-   The `server.js` file is currently configured with a Groq API key for local testing.
+   Create a `.env` file in the root directory and add your Groq API key:
+   ```env
+   GROQ_API_KEY=your_actual_api_key_here
+   ```
 
 3. **Launch the Experience:**
    ```bash
